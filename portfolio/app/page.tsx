@@ -78,10 +78,10 @@ const projects = [
       "Developed SQL-based analytical solutions to evaluate solar energy production, consumption, battery utilization, and grid transactions using MySQL to identify performance trends and operational insights.",
   },
   {
-    title: "Business Strategy Simulation",
+    title: "Capstone Simulation",
     tool: "Excel, Capsim",
     file: "/Analysis.pptx",
-    tag: "1st Place",
+    tag: "Business Strategy",
     description:
       "Developed and executed business strategies across finance, marketing, operations, and R&D, leading Team Digby to a 1st place finish in the Capsim business simulation.",
   },
