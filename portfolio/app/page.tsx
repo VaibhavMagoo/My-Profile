@@ -135,6 +135,7 @@ const projects = [
     file: "/Analysis.pptx",
     description:
       "Developed and executed business strategies across finance, marketing, operations, and R&D, leading Team Digby to a 1st place finish in the Capsim simulation.",
+  },
   {
     title: "U.K Portfolio Management",
     tools: "Excel, Bloomberg Terminal",
