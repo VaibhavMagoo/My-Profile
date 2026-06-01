@@ -130,8 +130,14 @@ const projects = [
       "Developed SQL-based analytical solutions to evaluate solar energy operations and support business decision-making. Conducted data analysis on energy production, consumption, battery utilization, and grid transactions to identify performance trends and operational insights using MySQL.",
   },
   {
+    title: "Business Strategy Simulation",
+    tools: "Excel, Capsim",
+    file: "/Analysis.pptx",
+    description:
+      "Developed and executed business strategies across finance, marketing, operations, and R&D, leading Team Digby to a 1st place finish in the Capsim simulation.",
+  {
     title: "U.K Portfolio Management",
-    tool: "Excel, Bloomberg Terminal",
+    tools: "Excel, Bloomberg Terminal",
     file: "/Portfolio Management.pdf",
     description:
       "Developed a UK equities investment portfolio using portfolio theory, efficient frontier analysis, CAPM concepts, covariance matrices, Sharpe ratio evaluation, and Bloomberg PORT analytics. Conducted sector-based equity analysis focused on post-Brexit market opportunities, risk diversification, tracking error analysis, and value investing strategies across FTSE 100 companies.",
