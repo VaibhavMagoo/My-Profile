@@ -102,7 +102,7 @@ const projects = [
       "Conducted financial analysis and valuation of Intertek Group Plc using profitability, liquidity, leverage, efficiency, DDM, FCFF, CAPM, Beta analysis, ABHR strategy, and peer benchmarking.",
   },
   {
-    title: "Aztec Airwalk: Skateboard Ramp Manufacturing — Managerial Accounting",
+    title: "Aztec Airwalk: Skateboard Ramp Manufacturing",
     tool: "Excel, CVP Modeling",
     file: "/Final Project.pdf",
     tag: "Cost Accounting",
