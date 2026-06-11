@@ -51,7 +51,7 @@ const projects = [
     file: "/Slides.pptx",
     tag: "Mobility Analytics",
     description:
-      "Analyzed Maharashtra’s vehicle population trends using Python to identify growth opportunities in private and commercial transport markets. Developed insights supporting EV adoption, public transportation, regional disparity analysis, and infrastructure planning.",
+      "Analyzed Maharashtra's vehicle population trends using Python to identify growth opportunities in private and commercial transport markets. Developed insights supporting EV adoption, public transportation, regional disparity analysis, and infrastructure planning.",
   },
   {
     title: "Healthcare Analytics & Predictive Modeling",
@@ -100,6 +100,14 @@ const projects = [
     tag: "Valuation",
     description:
       "Conducted financial analysis and valuation of Intertek Group Plc using profitability, liquidity, leverage, efficiency, DDM, FCFF, CAPM, Beta analysis, ABHR strategy, and peer benchmarking.",
+  },
+  {
+    title: "Aztec Airwalk: Skateboard Ramp Manufacturing — Managerial Accounting",
+    tool: "Excel, CVP Modeling",
+    file: "/Final Project.pdf",
+    tag: "Cost Accounting",
+    description:
+      "Designed a managerial accounting model for a skateboard ramp manufacturer covering BOM costing, ABC overhead allocation, cost-plus pricing, and CVP analysis. Identified a break-even of ~425 units ($788K revenue), with Skatelite upgrades and Funboxes driving 81% of total contribution margin.",
   },
 ];
 
