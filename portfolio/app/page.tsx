@@ -191,7 +191,9 @@ export default function Home() {
             darkMode ? "border-slate-800" : "border-slate-200"
           }`}
         >
-          <h2 className="text-xl font-black tracking-tight">VAB</h2>
+          <a href="/" className="text-xl font-black tracking-tight hover:text-blue-500 transition">
+            VB
+          </a>
 
           <div
             className={`hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest ${
