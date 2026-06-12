@@ -210,7 +210,7 @@ function ProjectIcon({ name }: { name: string }) {
   }
 }
 
-
+export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
 
