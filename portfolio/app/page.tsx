@@ -135,7 +135,8 @@ const projects = [
 ];
 
 const stats = [
-  { value: "MBA + MSc", label: "Information Systems & Finance" },
+  { value: "MBA", label: "Information Systems" },
+  { value: "MSc", label: "Finance" },
   { value: "PMP", label: "Certified" },
   { value: "CFA L1", label: "Passed" },
 ];
@@ -268,7 +269,7 @@ export default function Home() {
           }`}
         >
           <a href="/" className="text-xl font-black tracking-tight hover:text-blue-500 transition">
-            VAB
+            VB
           </a>
 
           <div
