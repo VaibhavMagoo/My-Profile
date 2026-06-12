@@ -269,7 +269,7 @@ function ProjectIcon({ name }: { name: string }) {
           }`}
         >
           <a href="/" className="text-xl font-black tracking-tight hover:text-blue-500 transition">
-            VB
+            VAB
           </a>
 
           <div
