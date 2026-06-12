@@ -137,8 +137,7 @@ const projects = [
 const stats = [
   { value: "MBA + MSc", label: "Information Systems & Finance" },
   { value: "PMP", label: "Certified" },
-  { value: "CFA L1", label: "Certified" },
-  { value: "8", label: "Featured Projects" },
+  { value: "CFA L1", label: "Passed" },
 ];
 
 function ProjectIcon({ name }: { name: string }) {
