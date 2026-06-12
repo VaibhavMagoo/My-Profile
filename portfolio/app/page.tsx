@@ -60,6 +60,7 @@ const projects = [
     description:
       "Analyzed Maharashtra's vehicle population trends using Python to identify growth opportunities in private and commercial transport markets. Developed insights supporting EV adoption, public transportation, regional disparity analysis, and infrastructure planning.",
     gradient: "from-cyan-500 via-blue-600 to-indigo-700",
+    icon: "car",
   },
   {
     title: "Healthcare Analytics & Predictive Modeling",
@@ -69,6 +70,7 @@ const projects = [
     description:
       "Built predictive models in R to analyze medical insurance costs using regression and classification techniques. Compared Logistic Regression, LDA, KNN, Ridge, and Lasso models to identify high-cost risk drivers.",
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
+    icon: "pulse",
   },
   {
     title: "SMS Based Cyber Attacks",
@@ -78,6 +80,7 @@ const projects = [
     description:
       "Developed an SMS fraud detection system in R to classify ham, spam, and smishing messages using NLP, TF-IDF, SVM, and Neural Networks, achieving over 92% accuracy in detecting fraudulent SMS activity.",
     gradient: "from-fuchsia-500 via-purple-600 to-indigo-800",
+    icon: "shield",
   },
   {
     title: "Solar Energy Data Analysis",
@@ -87,6 +90,7 @@ const projects = [
     description:
       "Developed SQL-based analytical solutions to evaluate solar energy production, consumption, battery utilization, and grid transactions using MySQL to identify performance trends and operational insights.",
     gradient: "from-amber-400 via-orange-500 to-red-600",
+    icon: "sun",
   },
   {
     title: "Capstone Simulation",
@@ -96,6 +100,7 @@ const projects = [
     description:
       "Developed and executed business strategies across finance, marketing, operations, and R&D, leading Team Digby to a 1st place finish in the Capsim business simulation.",
     gradient: "from-rose-400 via-pink-500 to-fuchsia-700",
+    icon: "trophy",
   },
   {
     title: "U.K Portfolio Management",
@@ -105,6 +110,7 @@ const projects = [
     description:
       "Built a UK equities portfolio using efficient frontier analysis, CAPM, covariance matrices, Sharpe ratio evaluation, Bloomberg PORT analytics, tracking error analysis, and value investing strategies.",
     gradient: "from-slate-700 via-slate-800 to-black",
+    icon: "chart",
   },
   {
     title: "Financial Analysis of Intertek Group Plc",
@@ -114,6 +120,7 @@ const projects = [
     description:
       "Conducted financial analysis and valuation of Intertek Group Plc using profitability, liquidity, leverage, efficiency, DDM, FCFF, CAPM, Beta analysis, ABHR strategy, and peer benchmarking.",
     gradient: "from-blue-600 via-indigo-700 to-violet-800",
+    icon: "building",
   },
   {
     title: "Aztec Airwalk: Skateboard Ramp Manufacturing",
@@ -123,17 +130,87 @@ const projects = [
     description:
       "Designed a managerial accounting model for a skateboard ramp manufacturer covering BOM costing, ABC overhead allocation, cost-plus pricing, and CVP analysis. Identified a break-even of ~425 units ($788K revenue), with Skatelite upgrades and Funboxes driving 81% of total contribution margin.",
     gradient: "from-orange-400 via-amber-500 to-yellow-600",
+    icon: "skateboard",
   },
 ];
 
 const stats = [
   { value: "MBA + MSc", label: "Information Systems & Finance" },
-  { value: "PMP & CFA L1", label: "Certified" },
-  { value: "3.87", label: "GPA, SDSU Fowler" },
+  { value: "PMP", label: "Certified" },
+  { value: "CFA L1", label: "Certified" },
   { value: "8", label: "Featured Projects" },
 ];
 
-export default function Home() {
+function ProjectIcon({ name }: { name: string }) {
+  const common = "absolute opacity-25 text-white";
+  switch (name) {
+    case "car":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${common} h-32 w-32 -right-6 -bottom-8 rotate-[-8deg]`}>
+          <path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="2" y="13" width="20" height="5" rx="1.5" />
+          <circle cx="7" cy="18.5" r="1.5" />
+          <circle cx="17" cy="18.5" r="1.5" />
+        </svg>
+      );
+    case "pulse":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${common} h-32 w-40 -right-4 -bottom-10`}>
+          <path d="M2 12h4l2 6 4-14 3 10 2-6h7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "shield":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${common} h-36 w-36 -right-8 -bottom-10 rotate-[6deg]`}>
+          <path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z" strokeLinejoin="round" />
+          <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "sun":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${common} h-32 w-32 -right-6 -bottom-8`}>
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1" strokeLinecap="round" />
+        </svg>
+      );
+    case "trophy":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${common} h-32 w-32 -right-6 -bottom-8 rotate-[-6deg]`}>
+          <path d="M7 4h10v4a5 5 0 0 1-10 0V4z" strokeLinejoin="round" />
+          <path d="M7 5H4a3 3 0 0 0 3 4M17 5h3a3 3 0 0 1-3 4" strokeLinecap="round" />
+          <path d="M9 16h6M12 13v4M8 20h8" strokeLinecap="round" />
+        </svg>
+      );
+    case "chart":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${common} h-32 w-40 -right-4 -bottom-8`}>
+          <path d="M3 20V10M9 20V4M15 20v-7M21 20V8" strokeLinecap="round" />
+          <path d="M2 20h20" strokeLinecap="round" />
+        </svg>
+      );
+    case "building":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${common} h-36 w-32 -right-6 -bottom-10`}>
+          <rect x="4" y="3" width="10" height="18" />
+          <rect x="14" y="9" width="6" height="12" />
+          <path d="M7 7h1M10 7h1M7 11h1M10 11h1M7 15h1M10 15h1" strokeLinecap="round" />
+        </svg>
+      );
+    case "skateboard":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${common} h-32 w-40 -right-4 -bottom-8 rotate-[-4deg]`}>
+          <path d="M2 14c2-3 18-3 20 0" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="6" cy="17" r="1.5" />
+          <circle cx="18" cy="17" r="1.5" />
+          <path d="M5 9l3-3M16 9l3-3M9 6h2M13 6h2" strokeLinecap="round" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+
   const [darkMode, setDarkMode] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
 
@@ -247,7 +324,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-6xl md:text-8xl font-black tracking-tight leading-[0.95]"
+            className="text-3xl md:text-5xl font-black tracking-tight leading-[0.95]"
           >
             VAIBHAV
             <br />
@@ -382,6 +459,7 @@ export default function Home() {
                     transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute inset-0 bg-white/10 blur-2xl"
                   />
+                  <ProjectIcon name={project.icon} />
                 </div>
 
                 <div className="p-6">
