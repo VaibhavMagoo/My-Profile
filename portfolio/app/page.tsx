@@ -1,7 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+
+const roles = [
+  "Financial Analyst",
+  "Data Analyst",
+  "Business Intelligence Analyst",
+  "FP&A Specialist",
+];
 
 const certificates = [
   "Project Management Professional (PMP), PMI Institute: 07/2025",
@@ -52,6 +59,7 @@ const projects = [
     tag: "Mobility Analytics",
     description:
       "Analyzed Maharashtra's vehicle population trends using Python to identify growth opportunities in private and commercial transport markets. Developed insights supporting EV adoption, public transportation, regional disparity analysis, and infrastructure planning.",
+    gradient: "from-cyan-500 via-blue-600 to-indigo-700",
   },
   {
     title: "Healthcare Analytics & Predictive Modeling",
@@ -60,6 +68,7 @@ const projects = [
     tag: "Predictive Modeling",
     description:
       "Built predictive models in R to analyze medical insurance costs using regression and classification techniques. Compared Logistic Regression, LDA, KNN, Ridge, and Lasso models to identify high-cost risk drivers.",
+    gradient: "from-emerald-500 via-teal-600 to-cyan-700",
   },
   {
     title: "SMS Based Cyber Attacks",
@@ -68,6 +77,7 @@ const projects = [
     tag: "Machine Learning",
     description:
       "Developed an SMS fraud detection system in R to classify ham, spam, and smishing messages using NLP, TF-IDF, SVM, and Neural Networks, achieving over 92% accuracy in detecting fraudulent SMS activity.",
+    gradient: "from-fuchsia-500 via-purple-600 to-indigo-800",
   },
   {
     title: "Solar Energy Data Analysis",
@@ -76,6 +86,7 @@ const projects = [
     tag: "SQL Analytics",
     description:
       "Developed SQL-based analytical solutions to evaluate solar energy production, consumption, battery utilization, and grid transactions using MySQL to identify performance trends and operational insights.",
+    gradient: "from-amber-400 via-orange-500 to-red-600",
   },
   {
     title: "Capstone Simulation",
@@ -84,6 +95,7 @@ const projects = [
     tag: "Business Strategy",
     description:
       "Developed and executed business strategies across finance, marketing, operations, and R&D, leading Team Digby to a 1st place finish in the Capsim business simulation.",
+    gradient: "from-rose-400 via-pink-500 to-fuchsia-700",
   },
   {
     title: "U.K Portfolio Management",
@@ -92,6 +104,7 @@ const projects = [
     tag: "Portfolio Theory",
     description:
       "Built a UK equities portfolio using efficient frontier analysis, CAPM, covariance matrices, Sharpe ratio evaluation, Bloomberg PORT analytics, tracking error analysis, and value investing strategies.",
+    gradient: "from-slate-700 via-slate-800 to-black",
   },
   {
     title: "Financial Analysis of Intertek Group Plc",
@@ -100,6 +113,7 @@ const projects = [
     tag: "Valuation",
     description:
       "Conducted financial analysis and valuation of Intertek Group Plc using profitability, liquidity, leverage, efficiency, DDM, FCFF, CAPM, Beta analysis, ABHR strategy, and peer benchmarking.",
+    gradient: "from-blue-600 via-indigo-700 to-violet-800",
   },
   {
     title: "Aztec Airwalk: Skateboard Ramp Manufacturing",
@@ -108,123 +122,310 @@ const projects = [
     tag: "Cost Accounting",
     description:
       "Designed a managerial accounting model for a skateboard ramp manufacturer covering BOM costing, ABC overhead allocation, cost-plus pricing, and CVP analysis. Identified a break-even of ~425 units ($788K revenue), with Skatelite upgrades and Funboxes driving 81% of total contribution margin.",
+    gradient: "from-orange-400 via-amber-500 to-yellow-600",
   },
 ];
 
+const stats = [
+  { value: "MBA + MSc", label: "Information Systems & Finance" },
+  { value: "PMP & CFA L1", label: "Certified" },
+  { value: "3.87", label: "GPA, SDSU Fowler" },
+  { value: "8", label: "Featured Projects" },
+];
+
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2200);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main
-      className={
-        darkMode
-          ? "min-h-screen bg-slate-950 text-white"
-          : "min-h-screen bg-slate-50 text-slate-950"
-      }
+      className={`min-h-screen transition-colors duration-500 relative overflow-x-hidden ${
+        darkMode ? "bg-slate-950 text-slate-50" : "bg-slate-50 text-slate-900"
+      }`}
     >
-      <section className="max-w-6xl mx-auto px-6 py-10">
-        <nav className="flex justify-between items-center py-6 border-b border-slate-800">
-          <h2 className="text-xl font-bold">Portfolio</h2>
+      {/* Animated background blobs */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+        <motion.div
+          animate={{
+            x: [0, 80, -40, 0],
+            y: [0, -60, 40, 0],
+          }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+          className={`absolute top-[-10%] left-[-10%] h-[28rem] w-[28rem] rounded-full blur-3xl ${
+            darkMode ? "bg-blue-600/20" : "bg-blue-400/30"
+          }`}
+        />
+        <motion.div
+          animate={{
+            x: [0, -100, 60, 0],
+            y: [0, 50, -30, 0],
+          }}
+          transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+          className={`absolute top-[20%] right-[-15%] h-[32rem] w-[32rem] rounded-full blur-3xl ${
+            darkMode ? "bg-fuchsia-600/15" : "bg-fuchsia-400/20"
+          }`}
+        />
+        <motion.div
+          animate={{
+            x: [0, 60, -80, 0],
+            y: [0, -40, 60, 0],
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+          className={`absolute bottom-[-15%] left-[20%] h-[30rem] w-[30rem] rounded-full blur-3xl ${
+            darkMode ? "bg-emerald-500/10" : "bg-amber-300/25"
+          }`}
+        />
+      </div>
 
-          <div className="hidden md:flex gap-6 text-sm text-gray-400">
-            <a href="#certificates" className="hover:text-blue-400">
-              Certificates
-            </a>
-            <a href="#skills" className="hover:text-blue-400">
-              Skills
-            </a>
-            <a href="#projects" className="hover:text-blue-400">
+      <section className="max-w-6xl mx-auto px-6 py-10 relative z-10">
+        {/* Nav */}
+        <nav
+          className={`flex justify-between items-center py-5 border-b ${
+            darkMode ? "border-slate-800" : "border-slate-200"
+          }`}
+        >
+          <h2 className="text-xl font-black tracking-tight">VAB</h2>
+
+          <div
+            className={`hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest ${
+              darkMode ? "text-slate-400" : "text-slate-500"
+            }`}
+          >
+            <a href="#projects" className="hover:text-blue-500 transition">
               Projects
             </a>
-            <a href="#contact" className="hover:text-blue-400">
+            <a href="#skills" className="hover:text-blue-500 transition">
+              Skills
+            </a>
+            <a href="#certificates" className="hover:text-blue-500 transition">
+              Certificates
+            </a>
+            <a href="#contact" className="hover:text-blue-500 transition">
               Contact
             </a>
           </div>
 
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="rounded-xl border border-slate-500 px-4 py-2 text-sm font-semibold hover:border-blue-400"
-          >
-            {darkMode ? "Day Mode" : "Night Mode"}
-          </button>
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-block text-xs font-mono px-3 py-1 rounded-full border border-blue-500/40 text-blue-500">
+              SAN DIEGO
+            </span>
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                darkMode
+                  ? "border-slate-700 hover:border-blue-500"
+                  : "border-slate-300 hover:border-blue-500"
+              }`}
+            >
+              {darkMode ? "☀ Day" : "☾ Night"}
+            </button>
+          </div>
         </nav>
 
-        <section className="py-20 text-center">
+        {/* Hero */}
+        <section className="py-24 text-center">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-blue-400 font-semibold mb-4"
+            className={`text-xs font-semibold uppercase tracking-[0.3em] mb-6 ${
+              darkMode ? "text-slate-400" : "text-slate-500"
+            }`}
           >
-            Business Analysis | Data Analytics | Financial Analytics
+            Business Analysis · Data Analytics · Financial Analytics
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold mb-5"
+            className="text-6xl md:text-8xl font-black tracking-tight leading-[0.95]"
           >
-            Vaibhav Magoo
+            VAIBHAV
+            <br />
+            MAGOO
           </motion.h1>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-2xl md:text-3xl text-blue-400 font-semibold mb-8"
-          >
-            MBA | MSc | PMP | CFA Level 1
-          </motion.h2>
+          <div className="h-10 mt-6 flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={roles[roleIndex]}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.35 }}
+                className="text-xl md:text-2xl font-semibold text-blue-500"
+              >
+                {roles[roleIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
 
           <motion.p
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-gray-300 max-w-4xl mx-auto leading-8 text-lg"
+            className={`max-w-3xl mx-auto leading-8 text-lg mt-8 ${
+              darkMode ? "text-slate-400" : "text-slate-600"
+            }`}
           >
             MBA graduate in Information Systems and a Project Management
-            Professional with hands-on experience engineering institutional data
-            pipelines, building analytical dashboards, and delivering
+            Professional with hands-on experience engineering institutional
+            data pipelines, building analytical dashboards, and delivering
             reproducible reporting solutions. Proficient in Python, R, SQL,
-            Tableau, and Power BI. Committed to data accuracy, governance, and
-            delivering actionable business insights.
+            Tableau, and Power BI.
           </motion.p>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#projects"
-              className="bg-blue-500 hover:bg-blue-600 px-7 py-3 rounded-xl font-semibold text-white"
-            >
-              View Projects
-            </a>
+          {/* Stat cards */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4, scale: 1.03 }}
+                transition={{ delay: 0.4 + i * 0.08 }}
+                className={`rounded-2xl border p-4 backdrop-blur-sm ${
+                  darkMode
+                    ? "bg-slate-900/60 border-slate-800"
+                    : "bg-white/70 border-slate-200"
+                }`}
+              >
+                <p className="text-lg md:text-xl font-extrabold">{stat.value}</p>
+                <p
+                  className={`text-xs uppercase tracking-wider mt-1 ${
+                    darkMode ? "text-slate-400" : "text-slate-500"
+                  }`}
+                >
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
 
-            <a
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
               href="/Vaibhav_Magoo--Resume.pdf"
               download
-              className="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-7 py-3 rounded-xl font-semibold text-white"
+              className={`px-7 py-3 rounded-full font-semibold transition ${
+                darkMode
+                  ? "bg-white text-slate-950 hover:bg-blue-500 hover:text-white"
+                  : "bg-slate-950 text-white hover:bg-blue-600"
+              }`}
             >
-              Download Resume
-            </a>
+              Download Resume ↓
+            </motion.a>
 
-            <a
-              href="#contact"
-              className="border border-slate-500 hover:border-blue-400 px-7 py-3 rounded-xl font-semibold"
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              href="#projects"
+              className={`border px-7 py-3 rounded-full font-semibold transition hover:border-blue-500 hover:text-blue-500 ${
+                darkMode ? "border-slate-700" : "border-slate-300"
+              }`}
             >
-              Contact Me
-            </a>
+              View Projects
+            </motion.a>
+          </div>
+
+          <div className="mt-8 flex justify-center gap-3 text-sm">
+            {[
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/vaibhav-magoo/" },
+              { label: "GitHub", href: "https://github.com/VaibhavMagoo" },
+              { label: "Email", href: "mailto:magoovaibhav@gmail.com" },
+            ].map((link) => (
+              <motion.a
+                key={link.label}
+                whileHover={{ scale: 1.08 }}
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                className={`px-4 py-2 rounded-full border transition hover:border-blue-500 hover:text-blue-500 ${
+                  darkMode ? "border-slate-700" : "border-slate-300"
+                }`}
+              >
+                {link.label}
+              </motion.a>
+            ))}
           </div>
         </section>
 
-        <Section id="certificates" title="Certificates">
-          <div className="grid md:grid-cols-2 gap-4">
-            {certificates.map((certificate) => (
-              <Card key={certificate}>
-                <p className="text-gray-300">{certificate}</p>
-              </Card>
+        {/* Projects */}
+        <Section id="projects" title="Projects">
+          <div className="grid md:grid-cols-2 gap-6">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -6, scale: 1.01 }}
+                transition={{ duration: 0.4, delay: index * 0.04 }}
+                viewport={{ once: true }}
+                className={`group overflow-hidden rounded-3xl border transition-shadow hover:shadow-xl ${
+                  darkMode
+                    ? "bg-slate-900 border-slate-800 hover:shadow-blue-900/30"
+                    : "bg-white border-slate-200 hover:shadow-blue-200/50"
+                }`}
+              >
+                <div className={`relative h-28 w-full overflow-hidden bg-gradient-to-br ${project.gradient}`}>
+                  <motion.div
+                    animate={{ x: ["-20%", "20%", "-20%"] }}
+                    transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-0 bg-white/10 blur-2xl"
+                  />
+                </div>
+
+                <div className="p-6">
+                  <div className="flex justify-between items-start gap-4 mb-3">
+                    <span className="text-xs uppercase tracking-widest text-blue-500 bg-blue-500/10 px-3 py-1 rounded-full">
+                      {project.tag}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-blue-500 transition">
+                    {project.title}
+                  </h3>
+
+                  <p className={`leading-7 text-sm ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {project.tool.split(",").map((t) => (
+                      <span
+                        key={t}
+                        className={`text-xs font-medium px-3 py-1 rounded-full border ${
+                          darkMode
+                            ? "border-slate-700 text-slate-400"
+                            : "border-slate-200 text-slate-500"
+                        }`}
+                      >
+                        {t.trim()}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={project.file}
+                    download
+                    className="inline-block mt-5 text-sm font-semibold text-blue-500 hover:underline"
+                  >
+                    Download Project File →
+                  </a>
+                </div>
+              </motion.div>
             ))}
           </div>
         </Section>
 
+        {/* Skills */}
         <Section id="skills" title="Skills & Tools">
           <div className="grid md:grid-cols-2 gap-6">
             {skills.map((skill, index) => (
@@ -232,110 +433,93 @@ export default function Home() {
                 key={skill.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -6 }}
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="relative overflow-hidden bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500"
+                className={`rounded-3xl border p-6 ${
+                  darkMode ? "bg-slate-900 border-slate-800" : "bg-white border-slate-200"
+                }`}
               >
-                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-blue-500/10 blur-xl" />
-
                 <div className="flex items-center gap-4 mb-4">
-                  <motion.div
-                    animate={{ y: [0, -7, 0] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 2.5,
-                      delay: index * 0.2,
-                    }}
-                    className="text-4xl"
+                  <motion.span
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.2 }}
+                    className="text-3xl"
                   >
                     {skill.icon}
-                  </motion.div>
-
-                  <h3 className="text-xl font-bold text-blue-400">
-                    {skill.title}
-                  </h3>
+                  </motion.span>
+                  <h3 className="text-lg font-bold text-blue-500">{skill.title}</h3>
                 </div>
-
-                <p className="text-gray-300 leading-7">{skill.items}</p>
-              </motion.div>
-            ))}
-          </div>
-        </Section>
-
-        <Section id="projects" title="Featured Projects">
-          <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                viewport={{ once: true }}
-                className="group relative overflow-hidden bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500"
-              >
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-500" />
-
-                <div className="flex justify-between items-start gap-4 mb-4">
-                  <span className="text-xs uppercase tracking-widest text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                    {project.tag}
-                  </span>
-
-                  <span className="text-sm text-gray-400">{project.tool}</span>
-                </div>
-
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition">
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-300 leading-7">
-                  {project.description}
+                <p className={`leading-7 text-sm ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
+                  {skill.items}
                 </p>
-
-                <a
-                  href={project.file}
-                  download
-                  className="inline-block mt-6 bg-blue-500 hover:bg-blue-600 px-5 py-3 rounded-xl font-semibold text-white"
-                >
-                  Download Project File
-                </a>
               </motion.div>
             ))}
           </div>
         </Section>
 
+        {/* Certificates */}
+        <Section id="certificates" title="Certificates">
+          <div className="grid md:grid-cols-2 gap-4">
+            {certificates.map((certificate, index) => (
+              <motion.div
+                key={certificate}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ x: 4 }}
+                transition={{ delay: index * 0.04 }}
+                viewport={{ once: true }}
+                className={`rounded-2xl border p-5 ${
+                  darkMode ? "bg-slate-900 border-slate-800" : "bg-white border-slate-200"
+                }`}
+              >
+                <p className={`text-sm ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
+                  {certificate}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+
+        {/* Contact */}
         <Section id="contact" title="Contact">
-          <Card>
-            <div className="grid md:grid-cols-2 gap-6 text-gray-300">
-              <div className="space-y-3">
+          <div
+            className={`rounded-3xl border p-8 ${
+              darkMode ? "bg-slate-900 border-slate-800" : "bg-white border-slate-200"
+            }`}
+          >
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-3 text-sm">
                 <p>Email: magoovaibhav@gmail.com</p>
                 <p>Ph: +1 279-234-0386</p>
-                <p>Location: California, USA</p>
+                <p>Location: San Diego, California, USA</p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3 text-sm">
                 <a
                   href="https://www.linkedin.com/in/vaibhav-magoo/"
                   target="_blank"
-                  className="block text-blue-400 hover:text-blue-300"
+                  className="block text-blue-500 hover:underline"
                 >
-                  LinkedIn Profile
+                  LinkedIn Profile →
                 </a>
-
                 <a
                   href="https://github.com/VaibhavMagoo"
                   target="_blank"
-                  className="block text-blue-400 hover:text-blue-300"
+                  className="block text-blue-500 hover:underline"
                 >
-                  GitHub Profile
+                  GitHub Profile →
                 </a>
               </div>
             </div>
-          </Card>
+          </div>
         </Section>
 
-        <footer className="py-10 text-center text-gray-500 border-t border-slate-800 mt-10">
+        <footer
+          className={`py-10 text-center text-sm border-t mt-10 ${
+            darkMode ? "text-slate-400 border-slate-800" : "text-slate-500 border-slate-200"
+          }`}
+        >
           © 2026 Vaibhav Magoo. Built with Next.js and Tailwind CSS.
         </footer>
       </section>
@@ -353,26 +537,16 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="py-14">
-      <h2 className="text-3xl md:text-4xl font-bold text-blue-400 mb-8">
-        {title}
-      </h2>
+    <section id={id} className="py-16">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-5xl md:text-6xl font-black tracking-tight mb-10"
+      >
+        {title.toUpperCase()}
+      </motion.h2>
       {children}
     </section>
-  );
-}
-
-function Card({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.4 }}
-      viewport={{ once: true }}
-      className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500 transition"
-    >
-      {children}
-    </motion.div>
   );
 }
