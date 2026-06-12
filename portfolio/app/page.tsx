@@ -211,7 +211,7 @@ function ProjectIcon({ name }: { name: string }) {
 }
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
@@ -324,11 +324,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-black tracking-tight leading-[0.95]"
+            className="text-3xl md:text-5xl font-black tracking-tight leading-[0.95] whitespace-nowrap"
           >
-            VAIBHAV
-            <br />
-            MAGOO
+            VAIBHAV MAGOO
           </motion.h1>
 
           <div className="h-10 mt-6 flex items-center justify-center">
