@@ -392,7 +392,7 @@ export default function Home() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              href="/Vaibhav_Magoo--Resume.pdf"
+              href="/Vaibhav Magoo__Resume.pdf"
               download
               className={`px-7 py-3 rounded-full font-semibold transition ${
                 darkMode
