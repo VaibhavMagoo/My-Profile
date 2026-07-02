@@ -11,6 +11,7 @@ const roles = [
 ];
 
 const certificates = [
+  "Financial Modeling & Valuation Analyst (FMVA), CFI: 07/2026",
   "Project Management Professional (PMP), PMI Institute: 07/2025",
   "Chartered Financial Analyst (CFA) Level 1, CFA Institute: 01/2023",
   "Financial Modeling, Udemy: 05/2021",
@@ -139,6 +140,7 @@ const stats = [
   { value: "MSc", label: "Finance" },
   { value: "PMP", label: "Certified" },
   { value: "CFA L1", label: "Passed" },
+  { value: "FMVA", label: "Certified" },
 ];
 
 function ProjectIcon({ name }: { name: string }) {
