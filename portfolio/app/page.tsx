@@ -362,7 +362,7 @@ export default function Home() {
           </motion.p>
 
           {/* Stat cards */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
