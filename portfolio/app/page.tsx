@@ -389,20 +389,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              href="/Vaibhav Magoo--Resume.pdf"
-              download
-              className={`px-7 py-3 rounded-full font-semibold transition ${
-                darkMode
-                  ? "bg-white text-slate-950 hover:bg-blue-500 hover:text-white"
-                  : "bg-slate-950 text-white hover:bg-blue-600"
-              }`}
-            >
-              Download Resume ↓
-            </motion.a>
-
+            
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
@@ -417,7 +404,6 @@ export default function Home() {
 
           <div className="mt-8 flex justify-center gap-3 text-sm">
             {[
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/vaibhav-magoo/" },
               { label: "GitHub", href: "https://github.com/VaibhavMagoo" },
               { label: "Email", href: "mailto:magoovaibhav@gmail.com" },
             ].map((link) => (
@@ -576,13 +562,6 @@ export default function Home() {
               </div>
 
               <div className="space-y-3 text-sm">
-                <a
-                  href="https://www.linkedin.com/in/vaibhav-magoo/"
-                  target="_blank"
-                  className="block text-blue-500 hover:underline"
-                >
-                  LinkedIn Profile →
-                </a>
                 <a
                   href="https://github.com/VaibhavMagoo"
                   target="_blank"
